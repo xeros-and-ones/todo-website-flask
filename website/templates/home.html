@@ -1,0 +1,24 @@
+{% extends 'base.html' %} {% block title %}Home{% endblock %}{% block content %}
+<h1 align='center'>Home</h1>
+<div class="p-3 mb-2 bg-secondary text-white">
+    <h3>Notes</h3>
+
+    <ul class="list-group list-group-flush">
+        {% for note in user.notes %}
+        <li class="list-group-item">
+          <input class="form-check-input me-1" type="checkbox" value="">
+          <label class="form-check-label">{{ note.todo_note }}</label>
+            <button type='button' class='btn-close' onClick={deleteNote({{note.id}})}>
+            </button>
+        </li>
+        {% endfor %}
+    </ul>
+    <form method="POST">
+        <textarea name="note" id="note" class="form-control"></textarea>
+        <div align='center'>
+            <button type="submit" class="btn btn-primary"> Add Note</button>
+        </div>
+    </form>
+</div>
+
+{% endblock %}
